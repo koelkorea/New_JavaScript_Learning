@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 모듈 시스템 개념학습3 - ES Module을 통한 js모듈 사용 예시2</title>
+    <script type = "module" src = 'index.js'> 
+
+        // <ES Module>
+        //  : JS ES6(ES2015)에 도입된 자바스크립트 자체의 모듈 시스템 방식 (과거 제작된 react에서 많이 보이는 녀석)
+        //      -> (중요) NodeJS 13.2부터 ES모듈 시스템에 대한 정식 지원이 시작 = node.js에서도 babel같은거 없이 사용 가능
+        //          -> package.json에서 type = "module" 선언화면 바로 사용 가능하게 조치
+
+        //  사용법 : (from 사용할 모듈) export 구문을 입력 -> (to 가져오는 파일) import구문을 통해 불러옴
+
+        //      - export 구문ㄴ
+        //          a. export default 내보내고 싶은 변수명;
+        //              : import시 특별한 변수명을 적지 않으면(= 보통 import a구문 사용시), 이 때 지명한 변수를 가져옴
+        //                (단! 한번 사용 가능함.. 기본으로 출력할 변수를 부르기 때문)
+
+        //          b. export default { 내보내고 싶은 변수명(여러개도 가능) };
+        //              : import시 특별한 변수명을 적지 않으면(= 보통 import a구문 사용시), 이 때 지명한 변수들을 가져옴
+        //                (a와 마찬가지로 한번 사용 가능함.. 기본으로 출력할 변수를 부르기 때문)
+
+        //          c. export let(const) 내보내고 싶은 변수명;
+        //              : 이를 통해 여러개의 변수들을 직관적으로 지명 가능
+        //                  -> 그나마 가장 범용성이 좋은 방법 
+
+        //      - import 구문
+        //          a. import 지은 변수명 from '불러오는 모듈 경로'
+        //              : 모듈에서 변수 하나만 가져오는 방법  
+        //                  -> export defalut {여려변수들} 을 사용한다면, b구문처럼 '지은 변수명'을 객체명처럼 사용 가능 
+        
+        //          b. import * as 지은 변수명 from '불러오는 모듈 경로';
+        //              : 모듈에서 모든 변수를 가져오는 방법 
+        //                (*의 의미 : SQL에서 모든 변수 가져오는것 의미.. -> 이걸 '지은 변수명'으로 통칭해 객체명화 하는 것)
+        //                  -> '별칭.프로퍼티' or '별칭.메서드명(파라미터....)'' 를 통해 값을 지칭해서 불러옴
+        
+        //          c. import { 가져올 변수명(여러개도 가능) } from '불러오는 모듈 경로';
+        //              : 모듈에서 1개 ~ 여러개 변수를 가져오는 방법
+        //                  -> 그나마 가장 범용성이 좋은 방법 
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

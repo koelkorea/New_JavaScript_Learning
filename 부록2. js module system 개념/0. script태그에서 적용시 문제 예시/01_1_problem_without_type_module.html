@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 모듈 시스템 개념학습1 - script 태그의 type = "module" 지정 없이 src속성을 통한 접근이 문제가 되는 이유</title>
+    <script src = "a.js"></script>
+    <script src = "b.js"></script>
+    <script> 
+        console.log('number : ' , number ) 
+
+        // (로그 값)
+        //  a.js > number :  10
+        //  b.js 1번 > number :  10
+        //  b.js 2번 > number :  20
+        //  number :  20
+
+        // [script 태그의 type = "module" 지정 없이, src속성을 통한 접근이 문제가 되는 이유]
+        //   -> 상단의 결과와 같이, 참고한 js 모듈에 같은 변수가 있을시 멋대로 변수값이 마지막에 입력한대로 덮어 띄어지는 문제 발생
+        //      -> (해결책) script 태그의 type = "module" 
+        //          : 각 모듈간 일종의 캡슐화를 가능하게 하여, 모듈 외부에서 변수값 조작을 막아야 함 
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

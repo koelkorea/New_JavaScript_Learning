@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 모듈 시스템 개념학습2 - script 태그의 type = "module" 의 역할</title>
+    <script type = "module" src = "a.js" crossorigin></script>
+    <script type = "module" src = "b.js" crossorigin></script>
+    <script type = "module"> 
+        console.log('number : ' , number );
+
+        // (로그 값)
+        //  a.js > number :  10
+        //  b.js:1 b.js 1번 > number :  undefined
+        //  b.js:3 b.js 2번 > number :  20
+        //  Uncaught ReferenceError ReferenceError: number is not defined at <anonymous>
+
+        //  -> type = "module" 속성을 통해, 각 js 모듈을 기준으로 '블럭 스코프'(block scope)와 같은 판정이 생겨서, 그 안에서 선언한 변수는 그 안에서만 사용이 가능
+        //      -> 다시 말해, Class 내 변수를 쓰려고 할 때 이들을 불러오는 문법이 있듯, 모듈 내의 변수들을 구분해서 불러오는 구문이 따로 필요하다는 것 의미
+        //          -> 이런 모듈을 불러오는 방식을 '모듈 시스템(module system)'으로 명칭함
+
+        //  * 블럭 스코프'(block scope)
+        //   : js(es6 이후로 추정)에서 지역변수적 요소를 구현하고자 쓰는 결계로 그 안에 쓰는 변수 let 혹은 const는 그 안에서만 통용되는 지역변수처럼 적용됨
+        //      -> {}를 통해 결계를 치고, 그 안에 쓴 변수 let 혹은 const는 그 안에서만 통용되는 지역변수화가 됨 (반대로, 안에서는 전역변수들을 만나는게 가능한 함수에서의 {}와 같음)
+        //         (단! var는 그런거 적용 안 되니 쓰지 않도록 한다)
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>
