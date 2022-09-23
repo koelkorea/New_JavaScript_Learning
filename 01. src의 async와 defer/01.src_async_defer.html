@@ -4,8 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>src 속성과 defer & async</title>
+    <!-- 일반 src 속성을 통한 모듈 사용 예시 -->
     <script src="main.js" ></script>
+    <!-- async 모듈 사용 예시 -->
     <script src="main.js" async></script>
+    <!-- defer 모듈 사용 예시 -->
     <script src="main.js" defer></script>
     <script>
       // [참고 URL (짐 코딩 강좌) ] : https://www.gymcoding.co/load-defer-async
@@ -14,11 +17,11 @@
       // 1. src란? 
       //    : script 태그의 속성으로 모듈화 된 js를 가져오기 위해 쓰는 HTML 태그 
       //      (모듈에 대한 부분은 react의 필요 개념에 언급되어 있으니 참고)
-      //        -> es6 이후로는 src 태그 자체가 잘 쓰이지 않음
+      //        -> es6 이후로는 src 태그 자체가 잘 쓰이지 않음 (import export 쓰임, 부록2 참고)
 
       // 2. src태그를 통한 script 로드
       //  (1) 원리
-      //    : 브라우저가 HTML 파일을 일반적으로 파싱하는 순차적 파싱 원칙을 따름
+      //    : js는 절차지향적 언어 = 브라우저가 HTML 파일을 일반적으로 파싱하는 순차적 파싱 원칙을 따름
       //       (= 위에서 부터 아래로 순차적으로 파싱하기에, 배치된 태그 순서대로 js모듈을 불러옴)
       
       //  (2) 순차적 파싱의 문제점
@@ -66,6 +69,6 @@
     </script>
   </head>
   <body>
-    <button id="btn">클릭해주세용!</button>
+    <button id="btn" src="https://www.gymcoding.co/load-defer-async">클릭해주세용!</button>
   </body>
 </html>
