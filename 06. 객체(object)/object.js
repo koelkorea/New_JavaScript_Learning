@@ -199,6 +199,7 @@ console.log('random' in ellie); // false
 console.log(ellie.random);      // undefined
 //----------------------------------------------------------------------------------------------------------------
 
+// - for key in 객체명 VS for value of iterable(순차적 컨테이너)
 
 // 6. for (key in obj)
 //  : [객체] 내부의 '프로퍼티명 = key'들을 순차적으로 꺼내서 반복작업을 하고 시플때 때 쓰는 문법
@@ -234,34 +235,79 @@ for (let key in ellie) {
 //----------------------------------------------------------------------------------------------------------------
 // ex) for (value of iterable) 예시
 const array = [1, 2, 4, 5];
+
+// 배열은 iterable 객체에 포함되므로 for of가 성립
 for (let value of array) {
-  console.log(value);
+  console.log(value);   //  1,2,4,5   <- array 배열(iterable)의 모든 value값이 순차적 등장
 }
+
+// 객체는 iterable 객체에 포함되지 않으므로, 성립X
+// for (let value of ellie) {
+//   console.log(value);   
+// }
+
 //----------------------------------------------------------------------------------------------------------------
 
 
-// 7. Fun cloning
+// 7. Object.assign(dest, [obj1, obj2, obj3...])
+//  :  Object 객체의 정적 메서드? 
+//      -> 본업은 배열 안에 값들을 넣는 것이지만? 객체를 복사(cloning)할 때도 쓸 수 있음
+//          -> 정확히는 객체 복사도 복사가 아니라, 나열된 객체들의 모든 key와 value를 key가 겹치지 않게 합쳐서 지정한 객체에 넣어주는 것
+
+//    ex) Object.assign( {} or 값 받을 객체 , 값1, .... , n );
+//         : 대상 객체에 값 넣기
+//        Object.assign( {} or 붙여넣기 당할 객체 , 복사할객체명1, .... , n );
+//         : 복사객체들의 key 안 겹치게 배열로 넣기
+
+//  # 배열 복사 기능 assign 사용시 주의점
+//    : 같은 key값을 가지고 있는 object1과 object2가 순차적으로 Object.assign( {}, object1, object2 ); 된다면?
+//      -> object2에 해당하는 값들이 최종적으로 복사가 됨
+
+//  # 객체 복사에 특별한 방법이 필요한 이유?
+//    : 객체는 =연산자를 통해 타 변수에 할당 시, 인스턴스가 갖는 메모리에 저장된 객체의 주소값을 타 변수에 할당함 
+//      (원시형에서 값이 복사되듯이, 객체 내용이 타 변수에 복사되는 게 아님)
+
+//     ex) let xxx = { key1 : value1 , key2 : value2 }; 
+//         let yyy = xxx; 
+//         -> yyy는 xxx의 객체 내용을 복사하는 것이 아니라! 
+//            -> xxx가 지정하는 객체의 인스턴스 주소값을 yyy 또한 가지고 있을 뿐 
+//              (= 결국 xxx나 yyy나 같은 객체의 접근 포털키을 가지고 있는것)
+
 //----------------------------------------------------------------------------------------------------------------
-// Object.assign(dest, [obj1, obj2, obj3...])
+// ex) 객체와 =연산자의 예시
+
 const user = { name: 'ellie', age: '20' };
-const user2 = user;
-console.log(user);
+const user2 = user; // 이 경우 user2에 저장되는 값은 객체값 그 자체가 아니라, user에서 저장한 객체값의 메모리 주소를 담은 인스턴스 값
 
-// old way
-const user3 = {};
-for (let key in user) {
+console.log(user);  // {name: 'ellie', age: '20'}
+//-----------------------------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------------------------
+// ex) 요즘 객체를 복사하는 방식 예시
+const user4 = Object.assign({}, user);
+console.log(user4);   // {name: 'ellie', age: '20'}
+//----------------------------------------------------------------------------------------------------------------
+
+// ex) 같은 key값을 가지고 있는 fruit1, fruit2 순차적으로 Object.assign( {}, object1, object2 ); 된다면? 예시
+const fruit1 = { color: 'red' , name: 'apple'};
+const fruit2 = { color: 'blue', size: 'big' };
+
+const mixed = Object.assign({}, fruit1, fruit2);
+
+console.log(mixed.color); //  blue
+console.log(mixed.name); //  apple  <- fruit2에 없던 key이기에 살아남음
+console.log(mixed.size);  //  big   <- fruit1에 없던 key
+//----------------------------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------------------------
+// ex) 객체 복사를 위한 예전 방법 old way
+//  : 빈 객체와 for in을 통한 key값 강제 전수
+
+const user3 = {};   // 빈 객체
+
+for (let key in user) {   // for in을 통해 빈 객체에 데이터 강제 이식
   user3[key] = user[key];
 }
-console.clear();
-console.log(user3);
 
-const user4 = Object.assign({}, user);
-console.log(user4);
-
-// another example
-const fruit1 = { color: 'red' };
-const fruit2 = { color: 'blue', size: 'big' };
-const mixed = Object.assign({}, fruit1, fruit2);
-console.log(mixed.color);
-console.log(mixed.size);
+console.log(user3);   // {name: 'ellie', age: '20'}
 //----------------------------------------------------------------------------------------------------------------
