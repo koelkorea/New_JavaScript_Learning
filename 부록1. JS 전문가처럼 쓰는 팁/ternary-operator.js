@@ -1,4 +1,5 @@
-// Ternary Operator
+// Ternary Operator (삼항연산자)
+//  : if else만 쓸거면, 3항으로 가즈아~
 
 // ❌ Bad Code 💩
 function getResult(score) {
