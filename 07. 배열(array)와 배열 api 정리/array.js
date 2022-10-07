@@ -56,6 +56,7 @@ fruits.forEach((fruit) => console.log(fruit));
 
 
 // 4. Addtion, deletion, copy (요소 추가, 삭제, 배열 복사)
+//  -> Addition은 스프레드 문법 응용하면 더 쉽게 가능한 케이스 있음
 
 // - push
 //  : add an item to the end (stack적, 배열 끝에 요소 추가)

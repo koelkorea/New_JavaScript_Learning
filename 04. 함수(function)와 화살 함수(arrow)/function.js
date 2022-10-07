@@ -23,7 +23,7 @@
 //    B) naming: doSomething, command, verb 
 //       : 함수명은 동사형, 명령형으로 짓도록 추천됨
 
-//    c) function is object in JS
+//    C) function is object in JS
 //       : 함수는 JS에서 객체로 인정(일급시민) = 함수를 변수, 파라미터, 리턴값 등등에 전달 가능
 
 //----------------------------------------------------------------------------------------
@@ -47,6 +47,23 @@ log(1234);
 // - object parameters : passed by reference
 //   : 파라미터가 객체형이면? 해당 객체가 저장된 메모리의 레퍼런스 값을 함수에 전달함
 
+//  # parameter tips
+//    1) parameter로 접근 후, function 내에서 arguments로 접근가능
+//    2) JS의 function를 실행시 넣어야 하는 파라미터에 제약은 없다
+//        -> 인자를 초과해서 넣거나, 미달해서 넣어도, JS는 함수를 실행하고 값을 리턴할 뿐이다... NULL이나 undefined가 나와서 그렇지
+
+//  # arguments
+//    : 함수 자신의 스코프에서 접근가능한 function의 parameter들로 이뤄진 일종의 유사배열 객체
+
+//    ex) function xxx (param1, param2, ... , paramN) {
+//          console.log(arguments.length);
+//          console.log(arguments[0]);
+//        }
+
+//        xxx("lsh", "my name");      // N, lsh
+
+//  # 유사배열
+//    : Array처럼 length있고, index로 접근가능하나.. 배열 메서드는 사용X
 
 //----------------------------------------------------------------------------------------
 // (ex) 객체가 파라미터일 경우 전달되는 것은 레퍼런스... 예제
@@ -83,7 +100,8 @@ showMessage('Hi!'); //  Hi! by unknown
 //  # 나머지(여분) 매개변수 특징
 //    A) 나머지 매개변수는 항상 마지막에 지정되는 파라미터여야 함 (= 남아있는 인수를 모으는 역할을 함)
 
-//      ex) function f(arg1, ...rest) { } 
+//      ex) ㅇ : function f(arg1, ...rest) { }  
+//          X : function f(arg1, ...rest, arg2) { }  
 
 //    B) 추후 '객체 구조분해' 문법에도 활용 가능
 
@@ -192,7 +210,7 @@ function upgradeUser(user) {
 //   : 함수를 변수, 파라미터, 리턴값 등등에 전달 가능
 
 
-// 1. Function declaration (함수 선언) vs Function expression (함수 할당)
+// 1. Function declaration (함수 선언) vs Function expression (함수 표현식)
 //  : 함수를 선언 및 실행하는 방법론적 차이
 
 //  - Function declaration (함수 선언) 
@@ -200,10 +218,20 @@ function upgradeUser(user) {
 //      -> a function declaration can be called earlier than it is defined. (hoisted)
 //         (단! 선언된 함수는 호이스팅되므로, 원래 함수가 선언된 위치보다 위쪽에서 정의될 수 있음 = 실행이 선언보다 우선할 수 있음!)
 
-//  - Function expression (함수 할당) 
+//    ex) function xxx() { return xxx; };
+
+//  - Function expression (함수 표현식) 
 //    : 일급시민 함수 특징을 가진 JS의 특징을 활용, 변수에 즉석 작성된 함수를 할당하여 함수를 실행하는 방식
 //      -> a function expression is created when the execution reaches it.
-//         (함수의 (변수) 할당 방식은 선언된 이후 위치에서 실행이 가능하다는 지극히 상식적인 특징이 있다)
+//         (함수의 (변수) 할당 방식은 선언된 위치 이후에 실행이 가능하다는 지극히 상식적인 특징이 있다)
+
+//    ex) let yyy = function xxx() { return xxx; };
+
+//   # (주의) 특정 객체의 메서드 중 this가 있는 녀석을 함수표현식으로 선언하면, 이를 실행할때 this가 제 역할을 못함
+
+//    ex) const user = { name : "Mike", showName : () => console.log(`hello, ${this.name}`); , };
+//        let example = user.showName;
+//      -> (결과) hello,
 
 //   # named function (유명 메서드) <-> anonymous function (무명 메서드)
 //     : 변수에 즉석 할당된 메서드가 이름이 있고 없고의 차이 
