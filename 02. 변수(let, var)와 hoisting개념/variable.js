@@ -80,13 +80,14 @@ const maxNumber = 5;
 //  - thread safety (멀티쓰레드의 경우, 동시다발적 접근으로 인해 프로그램이 개판되는 상황을 방지 가능)
 //  - reduce human mistakes (사람의 실수 가능성을 원천적으로 줄일 수 있음)
 
+
 // 4. Variable types (변수 자료형)
 //  - primitive (원시형) : number, string, boolean, null, undefined, symbol 과 같은 단일 변수
 //  - object(객체)
 //  - box container
 //  - function(함수) : JS는 first-class function (1급 힘수)가 지원되는 언어 (= 함수를 변수, return문, 함수의 인자로 할당 가능한 언어 의미)
 
-//  - primitive (원시형)
+// <primitive (원시형)>
 
 // a) number
 //  : integer(정수), decimal number(소수) 던 상관없이 하나로 통일
@@ -158,6 +159,7 @@ console.log(`value: ${symbol1.description}, type: ${typeof symbol1}`);
 //    -> 단! 객체는 너무 커서 한번에 메모리에 할당하지 않고, 수정 불가능함 객체명을 ref값으로 그 주소를 적어놓는 식으로 객체를 구성하는 데이터들의 위치를 담음
 const ellie = { name: 'ellie', age: 20 }; //  여기서 객체명 ellie는 객체를 구성하는 다른 데이터들이 담긴 메모리의 위치값을 담고 있음
 ellie.age = 21; // 그래서 객체명을 통해 객체의 맴버변수에 접근 및 내용 변경이 가능함.
+
 
 // 5. Dynamic typing (동적 타이핑)
 //  : JS는 동적 타입이 지원되는 언어라는 것에 대한 설명 (대충 타입스크립트가 나온 배경 설명)
