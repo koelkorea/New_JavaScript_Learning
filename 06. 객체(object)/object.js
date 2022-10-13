@@ -4,7 +4,7 @@
 //  : one of the JavaScript's data types, a collection of related data and/or functionality.
 //    (oop 언어에서 나오는 데이터의 타입으로, 연관된 변수나 함수들을 모아놓은 타입을 구현한 key와 value의 집합체라고 볼 수 있다)
 
-//    ex) let object = { key : value, key2 : value2 };
+//      ex) let object = { key : value, key2 : value2 };
 
 //    # 객체의 주요 개념 (Map, Set, Array 3신기도 물론 통용됨... 애초에 object의 후손들이니)
 //      - key : 프로퍼티의 이름
@@ -25,13 +25,13 @@
 //          -> Object.values(user) = ["John", 30]
 //          -> Object.entries(user) = [ ["name","John"], ["age",30] ]   <- 객체의 모든 [키, 값]을 담은 이중배열 반환 
 
-//    # (Map, Set, Array) vs (Object) : at key, values, entries 메서드
+//    # (Map, Set, Array) vs (Object) : key, values, entries 메서드의 성격차이
 
-//      - (Map, Set, Array)
+//      - (Map, Set, Array) : key, values, entries 메서드
 //        a. 반환값 : iterable 객체 
-//        b. 민스턴스에서 사용 가능한 일반 메서드
+//        b. 인스턴스에서 사용 가능한 일반 메서드
 
-//      - (Object)
+//      - (Object) : key, values, entries 메서드
 //        a. 반환값 : 배열로 반환 (하위호환성 때문이라고 함)
 //        b. Object 클래스에 소속된 정적 메서드
 
@@ -45,7 +45,7 @@
 
 //        # 변수명[Symbol.iterator]()
 //          : 해당 변수 객체 내부 속성 중 Symbol에서 iterator메서드를 작동시키라는 의미 
-//            (= 여기서 나오는 배열은 배열이 아니라, 객체의 특정 프로퍼티를 나타내는 부분이다)
+//            (= 여기서 나오는 배열은 배열이 아니라, 객체의 특정 프로퍼티를 나타내는 Computed properties (계산된 프로퍼티들) 부분이다)
 //              -> 이 이후 .next()같은 메서드 실행 가능
 
 //        # next()
@@ -76,7 +76,7 @@ const obj2 = new Object();   // 'object constructor' syntax (생성자를 통한
 function print(person) {
   console.log(person.name);
   console.log(person.age);
-}
+};
 //----------------------------------------------------------------------------------------------------------------
 
 
@@ -138,7 +138,7 @@ function printValue(obj, key) {
   console.log(obj.key);   // 무조건 undefined
   console.log(obj[key]);  
 }
- 
+
 printValue(ellie, 'name');  // undefined  ellie
 printValue(ellie, 'age');   // undefined  4
 //----------------------------------------------------------------------------------------------------------------
@@ -212,17 +212,17 @@ console.log('random' in ellie); // false
 console.log(ellie.random);      // undefined
 //----------------------------------------------------------------------------------------------------------------
 
-// - for key in 객체명 VS for value of iterable(순차적 컨테이너)
+// [for key in 객체명 VS for value of iterable(순차적 컨테이너)]
 
-// 6. for (key in obj)
-//  : [객체] 내부의 '프로퍼티명 = key'들을 순차적으로 꺼내서 반복작업을 하고 시플때 때 쓰는 문법
-//    <-> 5번의 in 구문에 for를 적용한 것 같지만, 전혀 다른 문법 (하단의 차이점 참고)
+// 7. for (key in obj)
+//  : [객체] 내부의 '프로퍼티명 = key'들을 순차적으로 꺼내서 반복작업을 하고 싶을 때 쓰는 문법
+//    <-> 6번의 in 구문에 for를 적용한 것 같지만, 전혀 다른 문법 (하단의 차이점 참고)
 
 //    ex) for ('프로퍼티명'을 받을 변수 in 인스턴스명)
 
 //  # (중요) 5번의 in 구문과 공통점 & 차이점
 //    - 공통점 : 반드시 '객체'만을 대상으로 사용이 가능함
-//    - 차이점 : 5번은 boolean 도출, 6번은 프로퍼티명 그 자체를 반복 도출
+//    - 차이점 : 6번은 boolean 도출, 7번은 프로퍼티명 그 자체를 반복 도출
 //----------------------------------------------------------------------------------------------------------------
 // ex) for (key in obj) 예시
 for (let key in ellie) {
@@ -232,7 +232,7 @@ for (let key in ellie) {
 
 
 // 7. for (value of iterable)
-//  : iterable 객체의 '프로퍼티값 = value'들을 순차적으로 꺼내서 반복작업을 하고 시플때 때 쓰는 문법
+//  : iterable 객체의 '프로퍼티값 = value'들을 순차적으로 꺼내서 반복작업을 하고 싶을 때 쓰는 문법
 
 //    ex) for ('프로퍼티값'을 받을 변수 in iterable 객체 인스턴스명)
 
@@ -246,7 +246,7 @@ for (let key in ellie) {
 
 //        # 변수명[Symbol.iterator]()
 //          : 해당 변수 객체 내부 속성 중 Symbol에서 iterator메서드를 작동시키라는 의미 
-//            (= 여기서 나오는 배열은 배열이 아니라, 객체의 특정 프로퍼티를 나타내는 부분이다)
+//            (= 여기서 나오는 배열은 배열이 아니라, 객체의 특정 프로퍼티를 나타내는 Computed properties (계산된 프로퍼티들) 부분이다)
 //              -> 이 이후 .next()같은 메서드 실행 가능
 
 //        # next()
@@ -267,7 +267,7 @@ for (let value of array) {
   console.log(value);   //  1,2,4,5   <- array 배열(iterable)의 모든 value값이 순차적 등장
 }
 
-// 객체는 iterable 객체에 포함되지 않으므로, 성립X
+// 일반 객체는 iterable 객체에 포함되지 않으므로, 성립X
 // for (let value of ellie) {
 //   console.log(value);   
 // }
@@ -275,15 +275,15 @@ for (let value of array) {
 //----------------------------------------------------------------------------------------------------------------
 
 
-// 7. Object.assign(dest, [obj1, obj2, obj3...])
+// 8. Object.assign(dest, [obj1, obj2, obj3...])
 //  :  Object 객체의 정적 메서드? 
 //      -> 본업은 배열 안에 값들을 넣는 것이지만? 객체를 복사(cloning)할 때도 쓸 수 있음
 //          -> 정확히는 객체 복사도 복사가 아니라, 나열된 객체들의 모든 key와 value를 key가 겹치지 않게 합쳐서 지정한 객체에 넣어주는 것
 
-//    ex) Object.assign( {} or 값 받을 객체 , 값1, .... , n );
+//    ex) Object.assign( {} or 값 받을 객체 , 값1, .... , 값n );
 //         : 대상 객체에 값 넣기
-//        Object.assign( {} or 붙여넣기 당할 객체 , 복사할객체명1, .... , n );
-//         : 복사객체들의 key 안 겹치게 배열로 넣기
+//        Object.assign( {} or 붙여넣기 당할 객체 , 복사할객체명1, .... , 복사할객체명n );
+//         : 복사객체들의 key 안 겹치게 배열로 넣기 (syntax 문법 사용)
 
 //  # 배열 복사 기능 assign 사용시 주의점
 //    : 같은 key값을 가지고 있는 object1과 object2가 순차적으로 Object.assign( {}, object1, object2 ); 된다면?
@@ -297,7 +297,7 @@ for (let value of array) {
 //         let yyy = xxx; 
 //         -> yyy는 xxx의 객체 내용을 복사하는 것이 아니라! 
 //            -> xxx가 지정하는 객체의 인스턴스 주소값을 yyy 또한 가지고 있을 뿐 
-//              (= 결국 xxx나 yyy나 같은 객체의 접근 포털키을 가지고 있는것)
+//              (= 결국 xxx나 yyy나 같은 객체의 접근 포털키를 가지고 있는것)
 
 //----------------------------------------------------------------------------------------------------------------
 // ex) 객체와 =연산자의 예시
@@ -305,7 +305,7 @@ for (let value of array) {
 const user = { name: 'ellie', age: '20' };
 const user2 = user; // 이 경우 user2에 저장되는 값은 객체값 그 자체가 아니라, user에서 저장한 객체값의 메모리 주소를 담은 인스턴스 값
 
-console.log(user);  // {name: 'ellie', age: '20'}
+console.log(user2);  // {name: 'ellie', age: '20'}
 //-----------------------------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------------------------
@@ -321,8 +321,8 @@ const fruit2 = { color: 'blue', size: 'big' };
 const mixed = Object.assign({}, fruit1, fruit2);
 
 console.log(mixed.color); //  blue
-console.log(mixed.name); //  apple  <- fruit2에 없던 key이기에 살아남음
-console.log(mixed.size);  //  big   <- fruit1에 없던 key
+console.log(mixed.name);  //  apple   <- fruit2에 없던 key이기에 살아남음
+console.log(mixed.size);  //  big     <- fruit1에 없던 key
 //----------------------------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------------------------

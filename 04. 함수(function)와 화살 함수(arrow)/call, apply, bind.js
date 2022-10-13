@@ -93,11 +93,11 @@ console.log(mike);      // {name: 'Mike', birthYear: 1111, occupation: 'crusader
 function mul(a, b) {
     return a * b;
 }
-  
+
 // this가 없는 mul를 베이스로 1번째 파라미터인 a에 해당하는 변수가 무조건 2로 고정되도록 변경한 함수를 double라는 변수에 저장
 //   = 사실상 double라는 신함수 탄생
 let double = mul.bind(null, 2);
-  
+
 // 1번째 파라미터가 2로 고정되었으므로, 남은 파라미터는 1개만 넣어도 됨
 alert( double(3) ); // = mul(2, 3) = 6
 alert( double(4) ); // = mul(2, 4) = 8

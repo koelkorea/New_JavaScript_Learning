@@ -12,7 +12,7 @@
 
 //      # 변수명[Symbol.iterator]()
 //         : 해당 변수 객체 내부 속성 중 Symbol에서 iterator메서드를 작동시키라는 의미 
-//           (= 여기서 나오는 배열은 배열이 아니라, 객체의 특정 프로퍼티를 나타내는 부분이다)
+//           (= 여기서 나오는 배열은 배열이 아니라, 객체의 특정 프로퍼티를 나타내는 Computed properties (계산된 프로퍼티들) 부분이다)
 //              -> 이 이후 .next()같은 메서드 실행 가능
 
 //      # next()
@@ -133,8 +133,8 @@ const execute2 = fn2();
 
 // 사실상 done: true가 될 일이 업음
 console.log(execute2.next());      //  {value: 1, done: false}
-console.log(execute2.next());      //  {value: 1, done: false}
-console.log(execute2.next());      //  {value: 1, done: false}
+console.log(execute2.next());      //  {value: 2, done: false}
+console.log(execute2.next());      //  {value: 3, done: false}
 
 //--------------------------------------------------------------------------------
 
@@ -158,7 +158,7 @@ function* gen2() {
     yield "!";
 }
 
-// rest parameter로서 Generator를 통째로 집어넣으면, 바로 모든 yield와 return문까지를 끊지않고 진행함 
+// Spread snxtax로서 Generator를 통째로 집어넣으면, 바로 모든 yield와 return문까지를 끊지않고 진행함 
 // (= 정확히는 iterable객체의 모든 값을 파라미터로 넣은것)
 console.log(...gen2());     //  Hello, W o r l d !
 

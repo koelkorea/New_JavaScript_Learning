@@ -102,7 +102,7 @@ json = JSON.stringify(rabbit, (key, value) => {
 
 });
 
-console.log(json);  //  {"name" : "ellie", "color" : "white", "size" : null, "birthDate":"2022-09-27T05:00:38.104Z" }
+console.log(json);  //  {key: "name" , value: "ellie"  key: "color" , value: "white"  key: "size" , value: null  key: "birthDate", value: "2022-09-27T05:00:38.104Z" }
 //----------------------------------------------------------------------------------------------------------------
 
 
