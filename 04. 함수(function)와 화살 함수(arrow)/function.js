@@ -228,8 +228,9 @@ function upgradeUser(user) {
 //    ex) let yyy = function xxx() { return xxx; };
 
 //   # (주의) 특정 객체의 메서드 중 this가 있는 녀석을 함수표현식으로 선언하면, 이를 실행할때 this가 제 역할을 못함
+//            -> (중요) 정확히는 메서드의 this가 함수표현식에서는 전역객체를 참조하는 것
 
-//    ex) const user = { name : "Mike", showName : () => console.log(`hello, ${this.name}`); , };
+//    ex) const user = { name : "Mike", showName() { console.log(`hello, ${this.name}`) } , };
 //        let example = user.showName;
 //      -> (결과) hello,
 
@@ -288,10 +289,12 @@ randomQuiz('love you', printYes, printNo);
 
 // 3. Arrow function (화살 함수)
 //  : (added in ES6) 기존 anonymous function의 표기법을 변경
-//    -> 
 
-//  ex) funtion () { 내용 return 결과 } -> () => { 내용 return 결과 }  or () => 결과
+//    ex) funtion () { 내용 return 결과 } -> () => { 내용 return 결과 }  or () => 결과
 
+//  # (중요!) Arrow function (화살 함수) 특징 
+//    1) Arrow function (화살 함수)를 메서드에 사용하여 내용에 this를 쓰면, 그 this는 해당 객체가 아닌 전역객체를 참조함
+//    2) 객체의 메서드를 작성할 때도 사용 가능함
 
 //-----------------------------------------------------------------------------------------
 // (ex) 화살함수 사용 예시

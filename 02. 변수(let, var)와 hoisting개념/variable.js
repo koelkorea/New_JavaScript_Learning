@@ -33,7 +33,7 @@ let globalName = 'global name'; // 블록 스코프 밖 전역변수(혹은 glob
 }
 
 // (중요) 해당 위치 이전을 기준으로 특정 블록 스코프 안에서만 선언된 변수는 일종의 지역변수로서 보기에, 스코프 밖에서는 접근이 불가능함
-console.log(name);
+// console.log(name);
 console.log(globalName);
 //---------------------------------------------------------------------------------------------------------
 
@@ -175,4 +175,4 @@ console.log(`value: ${text}, type: ${typeof text}`);
 
 text = '8' / '2'; // 문자숫자 / 문자숫자? -> 숫자로 인정
 console.log(`value: ${text}, type: ${typeof text}`);  // 이렇게 숫자로 변경 가능
-console.log(text.charAt(0));  // 단! 메서드는 그 타입을 가리지 못해서 에러를 낼수 있음... (처음부터 타입을 가려받자! = TS존재 의미)
+// console.log(text.charAt(0));  // 단! 메서드는 그 타입을 가리지 못해서 에러를 낼수 있음... (처음부터 타입을 가려받자! = TS존재 의미)
